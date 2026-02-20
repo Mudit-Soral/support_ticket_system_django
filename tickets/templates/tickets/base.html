@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Support Ticket System</title>
+</head>
+<body>
+
+<div style="background-color:#eee; padding:10px;">
+
+    <strong>Support Ticket System</strong>
+
+    <span style="float:right;">
+        Logged in as: {{ request.user.username }}
+
+        |
+        <a href="{% url 'ticket_list' %}">Dashboard</a>
+
+        |
+        <a href="{% url 'create_ticket' %}">Create Ticket</a>
+
+        |
+        <a href="{% url 'custom_logout' %}">Logout</a>
+    </span>
+
+</div>
+
+<hr>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
