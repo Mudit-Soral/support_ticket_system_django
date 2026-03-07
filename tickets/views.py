@@ -20,7 +20,7 @@ def register(request):
             return redirect('ticket_list')
     else:
         form = UserCreationForm()
-    return render(request, 'registration/register.html', {'form':form})
+    return render(request, 'register/registration.html', {'form':form})
 @login_required
 def ticket_list(request):
     tickets= Ticket.objects.filter(user = request.user)
