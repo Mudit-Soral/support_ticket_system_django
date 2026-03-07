@@ -57,7 +57,7 @@ support_ticket_system/
 Clone the repository:
 
 ```
-git clone https://github.com/YOUR_USERNAME/python-django-support-ticket-system.git
+git clone https://github.com/Mudit-Soral/python-django-support-ticket-system.git
 ```
 
 Go into the project:
