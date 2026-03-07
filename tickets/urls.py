@@ -15,6 +15,7 @@ urlpatterns = [
 
     # your login
     path('login/', auth_views.LoginView.as_view(template_name='tickets/login.html'), name='login'),
+    path('register/', views.register, name='register'),
 
     # override django default login
     path('accounts/login/', auth_views.LoginView.as_view(template_name='tickets/login.html')),

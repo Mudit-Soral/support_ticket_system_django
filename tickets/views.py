@@ -5,8 +5,22 @@ from django.contrib.auth.decorators import login_required
 from .models import Ticket
 from .forms import *
 from django.contrib.auth import logout as django_logout
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
 
-# Create your views here.
+
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+
+            login(request, user)
+            return redirect('ticket_list')
+    else:
+        form = UserCreationForm()
+    return render(request, 'registration/register.html', {'form':form})
 @login_required
 def ticket_list(request):
     tickets= Ticket.objects.filter(user = request.user)
@@ -14,8 +28,7 @@ def ticket_list(request):
     output = ""
     for ticket in tickets:
         output += ticket.title + "\n"
-    return render(request, 'tickets/ticket_list.html', {'tickets': tickets
-                                                       })
+    return render(request, 'tickets/ticket_list.html', {'tickets': tickets})
 
 @login_required
 def create_ticket(request):
@@ -65,3 +78,4 @@ def detail_ticket(request, id):
 def logout_view(request):
     django_logout(request)
     return redirect("login")   
+
